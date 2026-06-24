@@ -388,6 +388,51 @@ function ProgressGraph({ userId }) {
   );
 }
 
+// ─── Mini Calendar ───────────────────────────────────────────────
+function MiniCalendar({ events, onNavigate }) {
+  const today = new Date();
+  const year = today.getFullYear();
+  const month = today.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const monthName = today.toLocaleDateString('he-IL', { month: 'long', year: 'numeric' });
+
+  const eventDays = new Set(
+    events
+      .filter(e => {
+        const d = new Date(e.date);
+        return d.getMonth() === month && d.getFullYear() === year;
+      })
+      .map(e => new Date(e.date).getDate())
+  );
+
+  const cells = [];
+  for (let i = 0; i < firstDay; i++) cells.push(null);
+  for (let d = 1; d <= daysInMonth; d++) cells.push(d);
+
+  return (
+    <section className={styles.section}>
+      <div className={styles.sectionHeader}>
+        <h3 className={styles.sectionTitle}>📅 {monthName}</h3>
+        <button className={styles.seeAll} onClick={() => onNavigate('schedule')}>כל האירועים</button>
+      </div>
+      <div className={styles.calendarCard} onClick={() => onNavigate('schedule')}>
+        <div className={styles.calendarGrid}>
+          {['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'].map(d => (
+            <div key={d} className={styles.calendarDayName}>{d}</div>
+          ))}
+          {cells.map((day, i) => (
+            <div key={i} className={`${styles.calendarDay} ${day === today.getDate() ? styles.calendarToday : ''} ${day && eventDays.has(day) ? styles.calendarHasEvent : ''} ${!day ? styles.calendarEmpty : ''}`}>
+              {day}
+              {day && eventDays.has(day) && <span className={styles.calendarDot} />}
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 // ─── Main Page ───────────────────────────────────────────────────
 export default function HomePage({ onNavigate }) {
   const { currentUser, stages, getClientTasks, getClientEvents } = useApp();
@@ -418,6 +463,7 @@ export default function HomePage({ onNavigate }) {
       <AnxietyWidget userId={currentUser?.id} onHighAnxiety={setTodayAnxiety} />
       <TriggerWidget userId={currentUser?.id} anxietyValue={todayAnxiety} />
       <ProgressGraph userId={currentUser?.id} />
+      <MiniCalendar events={events} onNavigate={onNavigate} />
 
       {/* Stage */}
       <section className={styles.section}>

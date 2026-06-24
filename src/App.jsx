@@ -42,7 +42,7 @@ function AppInner() {
     }
     switch (page) {
       case 'home':     return <HomePage onNavigate={setPage} />;
-      case 'personal': return <PersonalAreaPage />;
+      case 'personal': return <PersonalAreaPage onNavigate={setPage} />;
       case 'program':  return <ProgramPage />;
       case 'schedule': return <SchedulePage />;
       case 'tasks':    return <TasksPage />;

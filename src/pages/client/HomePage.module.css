@@ -244,6 +244,71 @@
   color: #3A3235;
 }
 
+/* Mini Calendar */
+.calendarCard {
+  background: white;
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 2px 12px rgba(58, 50, 53, 0.07);
+  cursor: pointer;
+}
+
+.calendarGrid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  text-align: center;
+}
+
+.calendarDayName {
+  font-size: 11px;
+  color: #9B8F93;
+  font-weight: 600;
+  padding: 4px 0;
+}
+
+.calendarDay {
+  font-size: 13px;
+  color: #3A3235;
+  padding: 6px 2px;
+  border-radius: 8px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.calendarEmpty {
+  color: transparent;
+}
+
+.calendarToday {
+  background: #A52A2A;
+  color: white;
+  font-weight: 700;
+}
+
+.calendarHasEvent {
+  font-weight: 700;
+  color: #A52A2A;
+}
+
+.calendarToday.calendarHasEvent {
+  color: white;
+}
+
+.calendarDot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: #A52A2A;
+}
+
+.calendarToday .calendarDot {
+  background: white;
+}
+
 /* Quick Insight */
 .insightQuickBtn {
   border-color: #EDE8F5 !important;

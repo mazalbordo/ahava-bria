@@ -6,7 +6,6 @@ const NAV_ITEMS = [
   { id: 'home',     label: 'בית',          icon: '🏠' },
   { id: 'personal', label: 'אזור אישי',   icon: '👤' },
   { id: 'program',  label: 'התוכנית שלי', icon: '📖' },
-  { id: 'schedule', label: 'לוז',          icon: '📅' },
   { id: 'tasks',    label: 'המשימות שלי', icon: '✅' },
   { id: 'crisis',   label: 'SOS',          icon: '🆘', crisis: true },
 ];

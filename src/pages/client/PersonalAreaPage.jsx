@@ -119,36 +119,6 @@ function AnxietyGraph({ userId }) {
   );
 }
 
-function StageProgress({ stages, currentStage }) {
-  return (
-    <div className={styles.card}>
-      <h3 className={styles.cardTitle}>🌱 מסע ההתקדמות שלי</h3>
-      <div className={styles.stagesTrack}>
-        {stages.map((stage, i) => {
-          const done = stage.id < currentStage;
-          const active = stage.id === currentStage;
-          return (
-            <div key={stage.id} className={styles.stageRow}>
-              <div className={styles.stageLeft}>
-                <div className={`${styles.stageDot} ${done ? styles.stageDotDone : active ? styles.stageDotActive : styles.stageDotFuture}`}>
-                  {done ? '✓' : stage.id}
-                </div>
-                {i < stages.length - 1 && (
-                  <div className={`${styles.stageLine} ${done ? styles.stageLineDone : ''}`} />
-                )}
-              </div>
-              <div className={`${styles.stageContent} ${active ? styles.stageContentActive : ''}`}>
-                <div className={styles.stageName}>{stage.title}</div>
-                {active && <p className={styles.stageDesc}>{stage.description}</p>}
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
 function InsightsSection({ userId }) {
   const storageKey = `ab_insights_${userId}`;
   const [insights, setInsights] = useState(() => {
@@ -223,10 +193,21 @@ function InsightsSection({ userId }) {
   );
 }
 
-export default function PersonalAreaPage() {
-  const { currentUser, stages, logout } = useApp();
+export default function PersonalAreaPage({ onNavigate }) {
+  const { currentUser, stages, updateUser, logout } = useApp();
   const currentStage = currentUser?.currentStage ?? 1;
   const currentStageData = stages.find(s => s.id === currentStage);
+
+  const [editingProfile, setEditingProfile] = useState(false);
+  const [displayName, setDisplayName] = useState(currentUser?.displayName || currentUser?.name || '');
+  const [saving, setSaving] = useState(false);
+
+  async function handleSaveProfile() {
+    setSaving(true);
+    await updateUser(currentUser.id, { displayName });
+    setSaving(false);
+    setEditingProfile(false);
+  }
 
   return (
     <div className={styles.page}>
@@ -235,12 +216,64 @@ export default function PersonalAreaPage() {
         <h2 className={styles.heroName}>{currentUser?.name}</h2>
         <div className={styles.heroStage}>שלב {currentStage} — {currentStageData?.title}</div>
         {currentUser?.joinDate && (
-          <div className={styles.heroJoin}>איתנו מאז {new Date(currentUser.joinDate).toLocaleDateString('he-IL', { month: 'long', year: 'numeric' })}</div>
+          <div className={styles.heroJoin}>
+            איתנו מאז {new Date(currentUser.joinDate).toLocaleDateString('he-IL', { month: 'long', year: 'numeric' })}
+          </div>
         )}
       </div>
 
       <div className={styles.content}>
-        <StageProgress stages={stages} currentStage={currentStage} />
+
+        {/* Profile editing */}
+        <div className={styles.card}>
+          <div className={styles.cardHeader}>
+            <h3 className={styles.cardTitle}>👤 הפרופיל שלי</h3>
+            {!editingProfile && (
+              <button className={styles.addBtn} onClick={() => setEditingProfile(true)}>עריכה</button>
+            )}
+          </div>
+          {editingProfile ? (
+            <div className={styles.insightForm}>
+              <label className={styles.fieldLabel}>שם תצוגה בקהילה</label>
+              <input
+                className={styles.fieldInput}
+                value={displayName}
+                onChange={e => setDisplayName(e.target.value)}
+                placeholder="איך תרצי שיקראו לך בקהילה?"
+              />
+              <p className={styles.fieldNote}>זה השם שיופיע בקהילה — יכול להיות שם פרטי, כינוי, או כל מה שתרצי</p>
+              <div className={styles.btnRow}>
+                <button className={styles.saveBtn} onClick={handleSaveProfile} disabled={saving}>
+                  {saving ? 'שומרת...' : 'שמירה'}
+                </button>
+                <button className={styles.cancelBtn} onClick={() => setEditingProfile(false)}>ביטול</button>
+              </div>
+            </div>
+          ) : (
+            <div className={styles.profileInfo}>
+              <div className={styles.profileRow}>
+                <span className={styles.profileLabel}>שם</span>
+                <span className={styles.profileValue}>{currentUser?.name}</span>
+              </div>
+              <div className={styles.profileRow}>
+                <span className={styles.profileLabel}>שם בקהילה</span>
+                <span className={styles.profileValue}>{currentUser?.displayName || currentUser?.name}</span>
+              </div>
+              <div className={styles.profileRow}>
+                <span className={styles.profileLabel}>שלב בתוכנית</span>
+                <span className={styles.profileValue}>{currentStage} מתוך {stages.length}</span>
+              </div>
+            </div>
+          )}
+        </div>
+
+        {/* Button to program */}
+        <button className={styles.programBtn} onClick={() => onNavigate('program')}>
+          <span>📖</span>
+          <span>לתוכנית שלי — סרטונים ותכנים</span>
+          <span>←</span>
+        </button>
+
         <AnxietyGraph userId={currentUser?.id} />
         <InsightsSection userId={currentUser?.id} />
 
