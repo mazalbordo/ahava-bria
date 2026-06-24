@@ -421,12 +421,26 @@ function MiniCalendar({ events, onNavigate }) {
           {['א', 'ב', 'ג', 'ד', 'ה', 'ו', 'ש'].map(d => (
             <div key={d} className={styles.calendarDayName}>{d}</div>
           ))}
-          {cells.map((day, i) => (
-            <div key={i} className={`${styles.calendarDay} ${day === today.getDate() ? styles.calendarToday : ''} ${day && eventDays.has(day) ? styles.calendarHasEvent : ''} ${!day ? styles.calendarEmpty : ''}`}>
-              {day}
-              {day && eventDays.has(day) && <span className={styles.calendarDot} />}
-            </div>
-          ))}
+          {cells.map((day, i) => {
+            const hasEvent = day && eventDays.has(day);
+            const dateStr = day ? `${year}-${String(month + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}` : null;
+            return (
+              <div
+                key={i}
+                className={`${styles.calendarDay} ${day === today.getDate() ? styles.calendarToday : ''} ${hasEvent ? styles.calendarHasEvent : ''} ${!day ? styles.calendarEmpty : ''}`}
+                onClick={e => {
+                  e.stopPropagation();
+                  if (hasEvent && dateStr) {
+                    localStorage.setItem('ab_schedule_focus', dateStr);
+                  }
+                  if (day) onNavigate('schedule');
+                }}
+              >
+                {day}
+                {hasEvent && <span className={styles.calendarDot} />}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

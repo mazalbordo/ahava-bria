@@ -10,6 +10,8 @@ const TYPE_MAP = {
 export default function SchedulePage() {
   const { currentUser, getClientEvents } = useApp();
   const allEvents = getClientEvents(currentUser?.id);
+  const focusDate = localStorage.getItem('ab_schedule_focus');
+  if (focusDate) localStorage.removeItem('ab_schedule_focus');
 
   const sorted = [...allEvents].sort((a, b) => new Date(a.date) - new Date(b.date));
   const today = new Date(new Date().toDateString());
@@ -34,7 +36,7 @@ export default function SchedulePage() {
       {upcoming.length > 0 && (
         <section className={styles.section}>
           <h3 className={styles.groupTitle}>אירועים קרובים</h3>
-          {upcoming.map(ev => <EventCard key={ev.id} event={ev} />)}
+          {upcoming.map(ev => <EventCard key={ev.id} event={ev} highlight={focusDate === ev.date} />)}
         </section>
       )}
 
@@ -48,13 +50,13 @@ export default function SchedulePage() {
   );
 }
 
-function EventCard({ event, past }) {
+function EventCard({ event, past, highlight }) {
   const t = TYPE_MAP[event.type] || TYPE_MAP.event;
   const d = new Date(event.date);
   const dateStr = d.toLocaleDateString('he-IL', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
 
   return (
-    <div className={`${styles.card} ${past ? styles.cardPast : ''}`}>
+    <div className={`${styles.card} ${past ? styles.cardPast : ''} ${highlight ? styles.cardHighlight : ''}`}>
       <div className={styles.cardLeft}>
         <div className={styles.typeIcon} style={{ background: t.bg }}>{t.icon}</div>
       </div>

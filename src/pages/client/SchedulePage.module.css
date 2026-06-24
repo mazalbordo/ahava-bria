@@ -44,6 +44,11 @@
 
 .card:hover { transform: translateY(-1px); }
 
+.cardHighlight {
+  border: 2px solid #A52A2A;
+  box-shadow: 0 4px 20px rgba(165, 42, 42, 0.2);
+}
+
 .cardPast {
   opacity: 0.6;
 }
