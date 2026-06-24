@@ -37,7 +37,7 @@ async function seedIfEmpty() {
 
 export function AppProvider({ children }) {
   const [currentUser, setCurrentUser] = useState(() => {
-    const s = sessionStorage.getItem('ab_session');
+    const s = localStorage.getItem('ab_session');
     return s ? JSON.parse(s) : null;
   });
   const [loading, setLoading] = useState(true);
@@ -63,7 +63,7 @@ export function AppProvider({ children }) {
   async function login(username, password) {
     // בדיקת אדמין
     if (username === ADMIN_USER.username && password === ADMIN_USER.password) {
-      sessionStorage.setItem('ab_session', JSON.stringify(ADMIN_USER));
+      localStorage.setItem('ab_session', JSON.stringify(ADMIN_USER));
       setCurrentUser(ADMIN_USER);
       return { success: true };
     }
@@ -75,7 +75,7 @@ export function AppProvider({ children }) {
     });
     if (found) {
       const user = { id: found.id, ...found.data() };
-      sessionStorage.setItem('ab_session', JSON.stringify(user));
+      localStorage.setItem('ab_session', JSON.stringify(user));
       setCurrentUser(user);
       return { success: true };
     }
@@ -83,7 +83,7 @@ export function AppProvider({ children }) {
   }
 
   function logout() {
-    sessionStorage.removeItem('ab_session');
+    localStorage.removeItem('ab_session');
     setCurrentUser(null);
   }
 
@@ -99,7 +99,7 @@ export function AppProvider({ children }) {
     await updateDoc(doc(db, 'users', id), data);
     if (currentUser?.id === id) {
       const updated = { ...currentUser, ...data };
-      sessionStorage.setItem('ab_session', JSON.stringify(updated));
+      localStorage.setItem('ab_session', JSON.stringify(updated));
       setCurrentUser(updated);
     }
   }
