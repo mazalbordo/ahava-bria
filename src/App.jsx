@@ -8,6 +8,7 @@ import TasksPage from './pages/client/TasksPage';
 import VideosPage from './pages/client/VideosPage';
 import CrisisPage from './pages/client/CrisisPage';
 import ProgramPage from './pages/client/ProgramPage';
+import PersonalAreaPage from './pages/client/PersonalAreaPage';
 import AdminClientsPage from './pages/admin/AdminClientsPage';
 import AdminEventsPage from './pages/admin/AdminEventsPage';
 import AdminTasksPage from './pages/admin/AdminTasksPage';
@@ -40,12 +41,12 @@ function AppInner() {
       }
     }
     switch (page) {
-      case 'home': return <HomePage onNavigate={setPage} />;
+      case 'home':     return <HomePage onNavigate={setPage} />;
+      case 'personal': return <PersonalAreaPage />;
+      case 'program':  return <ProgramPage />;
       case 'schedule': return <SchedulePage />;
-      case 'tasks': return <TasksPage />;
-      case 'videos': return <VideosPage />;
-      case 'program': return <ProgramPage />;
-      case 'crisis':  return <CrisisPage />;
+      case 'tasks':    return <TasksPage />;
+      case 'crisis':   return <CrisisPage />;
       default:        return <HomePage onNavigate={setPage} />;
     }
   }

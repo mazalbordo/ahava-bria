@@ -3,11 +3,12 @@ import { useApp } from '../context/AppContext';
 import styles from './Layout.module.css';
 
 const NAV_ITEMS = [
-  { id: 'home',     label: 'בית',         icon: '🏠' },
+  { id: 'home',     label: 'בית',          icon: '🏠' },
+  { id: 'personal', label: 'אזור אישי',   icon: '👤' },
   { id: 'program',  label: 'התוכנית שלי', icon: '📖' },
-  { id: 'schedule', label: 'לוח זמנים',  icon: '📅' },
-  { id: 'tasks',    label: 'משימות',      icon: '✅' },
-  { id: 'crisis',   label: 'צריכה עזרה', icon: '🆘', crisis: true },
+  { id: 'schedule', label: 'לוז',          icon: '📅' },
+  { id: 'tasks',    label: 'המשימות שלי', icon: '✅' },
+  { id: 'crisis',   label: 'SOS',          icon: '🆘', crisis: true },
 ];
 
 const ADMIN_NAV_ITEMS = [
