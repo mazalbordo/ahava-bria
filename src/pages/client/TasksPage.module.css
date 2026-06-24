@@ -1,0 +1,106 @@
+.page { padding-bottom: 16px; }
+
+.pageHeader {
+  background: linear-gradient(135deg, #A52A2A, #C0504D);
+  padding: 32px 24px 28px;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.pageTitle { font-size: 24px; font-weight: 700; margin-bottom: 4px; }
+.pageSubtitle { font-size: 14px; opacity: 0.85; }
+
+.section { padding: 20px 20px 0; }
+
+.groupTitle {
+  font-size: 14px;
+  font-weight: 700;
+  color: #9B8F93;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.card {
+  background: white;
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 10px rgba(58,50,53,0.06);
+  transition: transform 0.15s;
+}
+
+.card:hover { transform: translateY(-1px); }
+
+.cardDone { opacity: 0.6; }
+
+.checkbox {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 2px solid #A52A2A;
+  background: none;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+  transition: background 0.2s;
+}
+
+.checked {
+  background: #A52A2A;
+  border-color: #A52A2A;
+}
+
+.checkmark {
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.cardBody { flex: 1; }
+
+.cardTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3A3235;
+  margin-bottom: 6px;
+  line-height: 1.4;
+}
+
+.cardDone .cardTitle {
+  text-decoration: line-through;
+  color: #9B8F93;
+}
+
+.cardDesc {
+  font-size: 13px;
+  color: #6B5F63;
+  line-height: 1.5;
+  margin-bottom: 8px;
+}
+
+.dueDate {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: #9B8F93;
+}
+
+.dueDateIcon { font-size: 13px; }
+
+.empty {
+  text-align: center;
+  padding: 60px 24px;
+  color: #9B8F93;
+}
+
+.emptyIcon { font-size: 48px; margin-bottom: 16px; }
+.empty p { font-size: 16px; font-weight: 600; margin-bottom: 8px; color: #6B5F63; }
+.empty span { font-size: 14px; }

@@ -1,0 +1,537 @@
+.page {
+  padding: 0 0 16px;
+}
+
+.greeting {
+  background: linear-gradient(135deg, #A52A2A, #C0504D);
+  padding: 32px 24px 28px;
+  color: white;
+}
+
+.hi {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.tagline {
+  font-size: 14px;
+  opacity: 0.85;
+}
+
+.section {
+  padding: 20px 20px 0;
+}
+
+.sectionHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.sectionTitle {
+  font-size: 17px;
+  font-weight: 700;
+  color: #3A3235;
+  margin-bottom: 12px;
+}
+
+.sectionHeader .sectionTitle {
+  margin-bottom: 0;
+}
+
+.seeAll {
+  font-size: 13px;
+  color: #A52A2A;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* Stage card */
+.stageCard {
+  background: white;
+  border-radius: 16px;
+  border-right: 4px solid;
+  padding: 20px;
+  box-shadow: 0 2px 12px rgba(58, 50, 53, 0.07);
+}
+
+.stageBadge {
+  display: inline-block;
+  color: white;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+}
+
+.stageTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #3A3235;
+  margin-bottom: 8px;
+}
+
+.stageDesc {
+  font-size: 14px;
+  color: #6B5F63;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.stageProgress {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 6px;
+  background: #E8DFD8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.progressLabel {
+  font-size: 13px;
+  font-weight: 700;
+  color: #6B5F63;
+  min-width: 36px;
+}
+
+.emptyCard {
+  background: white;
+  border-radius: 14px;
+  padding: 20px;
+  text-align: center;
+  color: #9B8F93;
+  font-size: 14px;
+}
+
+/* Stats */
+.statsRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding: 16px 20px 0;
+}
+
+.statCard {
+  background: white;
+  border-radius: 14px;
+  padding: 20px 16px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(58, 50, 53, 0.06);
+  transition: transform 0.15s;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+}
+
+.statNum {
+  display: block;
+  font-size: 32px;
+  font-weight: 700;
+  color: #A52A2A;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.statLabel {
+  font-size: 13px;
+  color: #6B5F63;
+}
+
+/* Event chip */
+.eventChip {
+  background: white;
+  border-radius: 12px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 10px;
+  box-shadow: 0 1px 8px rgba(58, 50, 53, 0.06);
+}
+
+.eventDate {
+  min-width: 44px;
+  background: #F5E8E8;
+  border-radius: 10px;
+  padding: 8px;
+  text-align: center;
+}
+
+.eventDay {
+  display: block;
+  font-size: 22px;
+  font-weight: 700;
+  color: #A52A2A;
+  line-height: 1;
+}
+
+.eventMonth {
+  display: block;
+  font-size: 11px;
+  color: #9B8F93;
+  margin-top: 2px;
+}
+
+.eventInfo {
+  flex: 1;
+}
+
+.eventTitle {
+  font-size: 15px;
+  font-weight: 600;
+  color: #3A3235;
+  margin-bottom: 6px;
+}
+
+.eventMeta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.eventType {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.eventTime {
+  font-size: 13px;
+  color: #9B8F93;
+}
+
+/* Task preview */
+.taskPreview {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 10px;
+  margin-bottom: 8px;
+}
+
+.taskDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #A52A2A;
+  flex-shrink: 0;
+}
+
+.taskTitle {
+  font-size: 14px;
+  color: #3A3235;
+}
+
+/* Quick Insight */
+.insightQuickBtn {
+  border-color: #EDE8F5 !important;
+  justify-content: space-between;
+}
+.insightLink {
+  font-size: 12px;
+  color: #A52A2A;
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.insightQuickCard {
+  background: white;
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(123,74,123,0.1);
+  border-top: 3px solid #7B4A7B;
+}
+
+/* Anxiety Widget */
+.savedBadge {
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.anxietyBtn {
+  width: 100%;
+  background: white;
+  border: 1.5px dashed #E8DFD8;
+  border-radius: 14px;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  color: #6B5F63;
+  font-size: 14px;
+  text-align: right;
+  transition: all 0.18s;
+}
+
+.anxietyBtn:hover {
+  border-color: #A52A2A;
+  background: #FAF7F2;
+}
+
+.anxietyBtnIcon {
+  font-size: 22px;
+  flex-shrink: 0;
+}
+
+.anxietyCard {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  box-shadow: 0 4px 20px rgba(58, 50, 53, 0.1);
+}
+
+.anxietyTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
+}
+
+.anxietyQuestion {
+  font-size: 16px;
+  font-weight: 600;
+  color: #3A3235;
+}
+
+.closeBtn {
+  background: #F5F0EC;
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  font-size: 13px;
+  color: #9B8F93;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.valueDisplay {
+  text-align: center;
+  line-height: 1;
+  margin-bottom: 6px;
+  transition: color 0.2s;
+}
+
+.valueBig {
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.valueMax {
+  font-size: 22px;
+  font-weight: 400;
+  opacity: 0.6;
+}
+
+.valueLabel {
+  text-align: center;
+  font-size: 15px;
+  color: #6B5F63;
+  margin-bottom: 20px;
+  min-height: 22px;
+}
+
+.sliderWrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+  direction: ltr;
+}
+
+.sliderMin, .sliderMax {
+  font-size: 13px;
+  color: #9B8F93;
+  font-weight: 600;
+  min-width: 16px;
+  text-align: center;
+}
+
+.sliderTicks {
+  direction: ltr;
+}
+
+.slider {
+  flex: 1;
+  -webkit-appearance: none;
+  appearance: none;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  background: transparent;
+}
+
+.slider::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 3px;
+  background: linear-gradient(
+    to right,
+    var(--fill-clr, #A52A2A) var(--fill-pct, 0%),
+    #E8DFD8 var(--fill-pct, 0%)
+  );
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--fill-clr, #A52A2A);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: 3px solid white;
+  transition: transform 0.15s;
+  margin-top: -9px;
+}
+
+.slider::-webkit-slider-thumb:active {
+  transform: scale(1.2);
+}
+
+.sliderTicks {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 12px;
+  margin-bottom: 20px;
+  direction: ltr;
+}
+
+.tick {
+  font-size: 11px;
+  color: #C4B8BC;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.tickActive {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.saveBtn {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 12px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Heebo', sans-serif;
+}
+
+.saveBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+/* ── Trigger Widget ── */
+.triggerCard {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  box-shadow: 0 4px 20px rgba(165, 42, 42, 0.1);
+  border-top: 3px solid #A52A2A;
+}
+
+.triggerField {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.triggerLabel {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B5F63;
+}
+
+.triggerTextarea {
+  padding: 12px 14px;
+  border: 1.5px solid #E8DFD8;
+  border-radius: 10px;
+  font-size: 14px;
+  color: #3A3235;
+  background: #FAF7F2;
+  resize: none;
+  font-family: 'Heebo', sans-serif;
+  direction: rtl;
+  line-height: 1.6;
+  transition: border-color 0.2s;
+}
+
+.triggerTextarea:focus {
+  outline: none;
+  border-color: #A52A2A;
+  background: white;
+}
+
+.triggerNote {
+  font-size: 12px;
+  color: #9B8F93;
+  background: #FAF7F2;
+  border-radius: 8px;
+  padding: 10px 12px;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+
+/* ── Intentions Widget ── */
+.intentionsCard {
+  background: white;
+  border-radius: 18px;
+  padding: 22px 20px 20px;
+  box-shadow: 0 4px 20px rgba(123, 74, 123, 0.08);
+  border-top: 3px solid #7B4A7B;
+}
+
+/* ── Progress Graph ── */
+.graphCard {
+  background: white;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 2px 12px rgba(58, 50, 53, 0.07);
+}
+
+.graphSvg {
+  width: 100%;
+  height: auto;
+  display: block;
+  overflow: visible;
+}
+
+.graphEmpty {
+  text-align: center;
+  font-size: 13px;
+  color: #9B8F93;
+  padding: 24px 0;
+  line-height: 1.6;
+}

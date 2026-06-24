@@ -1,0 +1,131 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #FAF7F2 0%, #F0E8E8 100%);
+  padding: 20px;
+}
+
+.card {
+  background: white;
+  border-radius: 24px;
+  padding: 48px 40px;
+  width: 100%;
+  max-width: 420px;
+  box-shadow: 0 8px 40px rgba(165, 42, 42, 0.12);
+}
+
+.logoWrap {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.logoPlaceholder {
+  width: 80px;
+  height: 80px;
+  background: linear-gradient(135deg, #A52A2A, #C0504D);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+}
+
+.logoHeart {
+  font-size: 36px;
+  color: white;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #3A3235;
+  margin-bottom: 6px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #9B8F93;
+  line-height: 1.5;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6B5F63;
+}
+
+.input {
+  padding: 13px 16px;
+  border: 1.5px solid #E8DFD8;
+  border-radius: 10px;
+  font-size: 15px;
+  color: #3A3235;
+  background: #FAF7F2;
+  transition: border-color 0.2s;
+  text-align: right;
+  direction: rtl;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #A52A2A;
+  background: white;
+}
+
+.input::placeholder {
+  color: #C4B8BC;
+}
+
+.error {
+  font-size: 13px;
+  color: #A52A2A;
+  background: #F5E8E8;
+  padding: 10px 14px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.btn {
+  background: linear-gradient(135deg, #A52A2A, #C0504D);
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s, transform 0.1s;
+  margin-top: 4px;
+}
+
+.btn:hover:not(:disabled) {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.footer {
+  text-align: center;
+  font-size: 13px;
+  color: #9B8F93;
+  margin-top: 24px;
+  line-height: 1.5;
+}

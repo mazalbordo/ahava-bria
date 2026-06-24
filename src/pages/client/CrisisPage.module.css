@@ -1,0 +1,320 @@
+.page {
+  padding: 24px 20px 40px;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Intro ── */
+.intro {
+  text-align: center;
+  padding: 40px 16px;
+}
+
+.introIcon {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.introTitle {
+  font-size: 28px;
+  font-weight: 700;
+  color: #3A3235;
+  margin-bottom: 14px;
+}
+
+.introText {
+  font-size: 16px;
+  color: #6B5F63;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.startBtn {
+  background: linear-gradient(135deg, #A52A2A, #C0504D);
+  color: white;
+  font-size: 17px;
+  font-weight: 700;
+  padding: 16px 40px;
+  border-radius: 14px;
+  border: none;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  transition: all 0.2s;
+}
+
+.startBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(165, 42, 42, 0.3);
+}
+
+/* ── Progress ── */
+.progressWrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.progressBar {
+  flex: 1;
+  height: 6px;
+  background: #E8DFD8;
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(to left, #A52A2A, #C0504D);
+  border-radius: 3px;
+  transition: width 0.4s ease;
+}
+
+.progressLabel {
+  font-size: 12px;
+  color: #9B8F93;
+  white-space: nowrap;
+}
+
+/* ── Step Card ── */
+.stepCard {
+  background: white;
+  border-radius: 20px;
+  padding: 28px 24px 24px;
+  box-shadow: 0 4px 24px rgba(58, 50, 53, 0.09);
+  margin-bottom: 16px;
+}
+
+.stepNum {
+  font-size: 40px;
+  margin-bottom: 14px;
+}
+
+.stepTitle {
+  font-size: 22px;
+  font-weight: 700;
+  color: #3A3235;
+  margin-bottom: 8px;
+}
+
+.stepSubtitle {
+  font-size: 14px;
+  color: #6B5F63;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1.5px solid #E8DFD8;
+  border-radius: 12px;
+  font-size: 15px;
+  color: #3A3235;
+  background: #FAF7F2;
+  resize: none;
+  font-family: 'Heebo', sans-serif;
+  direction: rtl;
+  line-height: 1.7;
+  transition: border-color 0.2s;
+  box-sizing: border-box;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #A52A2A;
+  background: white;
+}
+
+.btnRow {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+  justify-content: space-between;
+}
+
+.backBtn {
+  background: none;
+  border: 1.5px solid #E8DFD8;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 15px;
+  color: #6B5F63;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  transition: all 0.15s;
+}
+
+.backBtn:hover {
+  border-color: #A52A2A;
+  color: #A52A2A;
+}
+
+.nextBtn {
+  flex: 1;
+  background: linear-gradient(135deg, #A52A2A, #C0504D);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  transition: all 0.2s;
+}
+
+.nextBtn:hover {
+  opacity: 0.9;
+}
+
+/* ── Breathing Tip ── */
+.tip {
+  background: #F0E8F5;
+  border-radius: 12px;
+  padding: 14px 16px;
+}
+
+.tipText {
+  font-size: 13px;
+  color: #7B4A7B;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* ── Done ── */
+.doneCard {
+  background: white;
+  border-radius: 20px;
+  padding: 32px 24px;
+  box-shadow: 0 4px 24px rgba(58, 50, 53, 0.09);
+}
+
+.doneIcon {
+  font-size: 56px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.doneTitle {
+  font-size: 24px;
+  font-weight: 700;
+  color: #3A3235;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.doneText {
+  font-size: 15px;
+  color: #6B5F63;
+  text-align: center;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+/* Summary */
+.summary {
+  background: #FAF7F2;
+  border-radius: 14px;
+  padding: 16px;
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.summaryItem {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+}
+
+.summaryIcon {
+  font-size: 18px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.summaryLabel {
+  font-size: 12px;
+  font-weight: 700;
+  color: #9B8F93;
+  margin-bottom: 2px;
+}
+
+.summaryText {
+  font-size: 14px;
+  color: #3A3235;
+  line-height: 1.5;
+}
+
+/* Talk button */
+.actions {
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.talkBtn {
+  width: 100%;
+  background: linear-gradient(135deg, #A52A2A, #C0504D);
+  color: white;
+  border: none;
+  border-radius: 14px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  transition: all 0.2s;
+  margin-bottom: 8px;
+}
+
+.talkBtn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px rgba(165, 42, 42, 0.3);
+}
+
+.talkNote {
+  font-size: 12px;
+  color: #9B8F93;
+}
+
+.sentBox {
+  background: #E8F5E8;
+  border-radius: 12px;
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.sentIcon {
+  font-size: 24px;
+}
+
+.sentText {
+  font-size: 14px;
+  color: #3A7A3A;
+  line-height: 1.5;
+}
+
+.restartBtn {
+  width: 100%;
+  background: none;
+  border: 1.5px solid #E8DFD8;
+  border-radius: 12px;
+  padding: 12px;
+  font-size: 14px;
+  color: #9B8F93;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  transition: all 0.15s;
+}
+
+.restartBtn:hover {
+  border-color: #A52A2A;
+  color: #A52A2A;
+}
