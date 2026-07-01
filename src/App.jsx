@@ -5,10 +5,10 @@ import Layout from './components/Layout';
 import HomePage from './pages/client/HomePage';
 import SchedulePage from './pages/client/SchedulePage';
 import TasksPage from './pages/client/TasksPage';
-import VideosPage from './pages/client/VideosPage';
 import CrisisPage from './pages/client/CrisisPage';
 import ProgramPage from './pages/client/ProgramPage';
 import PersonalAreaPage from './pages/client/PersonalAreaPage';
+import CommunityPage from './pages/client/CommunityPage';
 import AdminClientsPage from './pages/admin/AdminClientsPage';
 import AdminEventsPage from './pages/admin/AdminEventsPage';
 import AdminTasksPage from './pages/admin/AdminTasksPage';
@@ -34,20 +34,21 @@ function AppInner() {
     if (isAdmin) {
       switch (page) {
         case 'admin-clients': return <AdminClientsPage />;
-        case 'admin-events': return <AdminEventsPage />;
-        case 'admin-tasks': return <AdminTasksPage />;
-        case 'admin-videos': return <AdminVideosPage />;
-        default: return <AdminClientsPage />;
+        case 'admin-events':  return <AdminEventsPage />;
+        case 'admin-tasks':   return <AdminTasksPage />;
+        case 'admin-videos':  return <AdminVideosPage />;
+        default:              return <AdminClientsPage />;
       }
     }
     switch (page) {
-      case 'home':     return <HomePage onNavigate={setPage} />;
-      case 'personal': return <PersonalAreaPage onNavigate={setPage} />;
-      case 'program':  return <ProgramPage />;
-      case 'schedule': return <SchedulePage />;
-      case 'tasks':    return <TasksPage />;
-      case 'crisis':   return <CrisisPage />;
-      default:        return <HomePage onNavigate={setPage} />;
+      case 'home':      return <HomePage onNavigate={setPage} />;
+      case 'personal':  return <PersonalAreaPage onNavigate={setPage} />;
+      case 'program':   return <ProgramPage />;
+      case 'community': return <CommunityPage />;
+      case 'schedule':  return <SchedulePage />;
+      case 'tasks':     return <TasksPage />;
+      case 'crisis':    return <CrisisPage />;
+      default:          return <HomePage onNavigate={setPage} />;
     }
   }
 

@@ -3,18 +3,19 @@ import { useApp } from '../context/AppContext';
 import styles from './Layout.module.css';
 
 const NAV_ITEMS = [
-  { id: 'home',     label: 'בית',          icon: '🏠' },
-  { id: 'personal', label: 'אזור אישי',   icon: '👤' },
-  { id: 'program',  label: 'התוכנית שלי', icon: '📖' },
-  { id: 'tasks',    label: 'המשימות שלי', icon: '✅' },
-  { id: 'crisis',   label: 'SOS',          icon: '🆘', crisis: true },
+  { id: 'home',      label: 'בית',          icon: '🏠' },
+  { id: 'personal',  label: 'אזור אישי',    icon: '👤' },
+  { id: 'program',   label: 'התוכנית שלי',  icon: '📖' },
+  { id: 'community', label: 'קהילה',        icon: '🌸' },
+  { id: 'tasks',     label: 'משימות',       icon: '✅' },
+  { id: 'crisis',    label: 'SOS',          icon: '🆘', crisis: true },
 ];
 
 const ADMIN_NAV_ITEMS = [
-  { id: 'admin-clients', label: 'לקוחות', icon: '👩' },
-  { id: 'admin-events', label: 'אירועים', icon: '📅' },
-  { id: 'admin-tasks', label: 'משימות', icon: '✅' },
-  { id: 'admin-videos', label: 'סרטונים', icon: '🎬' },
+  { id: 'admin-clients', label: 'לקוחות',  icon: '👩' },
+  { id: 'admin-events',  label: 'אירועים', icon: '📅' },
+  { id: 'admin-tasks',   label: 'משימות',  icon: '✅' },
+  { id: 'admin-videos',  label: 'סרטונים', icon: '🎬' },
 ];
 
 export default function Layout({ children, activePage, onNavigate }) {
@@ -44,9 +45,7 @@ export default function Layout({ children, activePage, onNavigate }) {
         <div className={styles.menuOverlay} onClick={() => setMenuOpen(false)}>
           <div className={styles.menuPanel} onClick={e => e.stopPropagation()}>
             <div className={styles.menuHeader}>
-              <div className={styles.menuAvatar}>
-                {currentUser?.name?.[0]}
-              </div>
+              <div className={styles.menuAvatar}>{currentUser?.name?.[0]}</div>
               <div>
                 <div className={styles.menuName}>{currentUser?.name}</div>
                 <div className={styles.menuRole}>{isAdmin ? 'מנהלת' : 'משתתפת'}</div>
@@ -64,9 +63,7 @@ export default function Layout({ children, activePage, onNavigate }) {
                 </button>
               ))}
             </nav>
-            <button className={styles.logoutBtn} onClick={logout}>
-              יציאה מהמערכת
-            </button>
+            <button className={styles.logoutBtn} onClick={logout}>יציאה מהמערכת</button>
           </div>
         </div>
       )}
