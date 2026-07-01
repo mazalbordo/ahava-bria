@@ -1,11 +1,10 @@
-﻿import { useState } from 'react';
+import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { CATEGORIES } from '../../data/initialData';
 import styles from './ProgramPage.module.css';
 
 function VideosList({ videos, category, activeTab, onDeepen }) {
   const [playing, setPlaying] = useState(null);
-
   const showDeepenBtn = activeTab === 'core' && category?.type === 'both';
 
   if (!videos.length) return (
