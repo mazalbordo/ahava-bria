@@ -1,53 +1,62 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import { CATEGORIES } from '../../data/initialData';
 import styles from './ProgramPage.module.css';
 
-function ProgramVideos({ videos }) {
+function VideosList({ videos }) {
   const [playing, setPlaying] = useState(null);
 
   if (!videos.length) return (
-    <div className={styles.videosCard}>
-      <h3 className={styles.cardTitle}>🎬 הסרטונים שלי</h3>
-      <p className={styles.videosEmpty}>מזל תעלה סרטונים עבורך בקרוב ✨</p>
-    </div>
+    <p className={styles.videosEmpty}>אין סרטונים בקטגוריה זו עדיין ✨</p>
   );
 
   return (
-    <div className={styles.videosCard}>
-      <h3 className={styles.cardTitle}>🎬 הסרטונים שלי</h3>
-      <div className={styles.videosList}>
-        {videos.map(v => (
-          <div key={v.id} className={styles.videoItem}>
-            {playing === v.id ? (
-              <div className={styles.videoEmbed}>
-                <iframe src={v.url + '?autoplay=1'} title={v.title}
-                  frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
-                <button className={styles.closeVideo} onClick={() => setPlaying(null)}>✕ סגירה</button>
+    <div className={styles.videosList}>
+      {videos.map(v => (
+        <div key={v.id} className={styles.videoItem}>
+          {playing === v.id ? (
+            <div className={styles.videoEmbed}>
+              <iframe src={v.url + '?autoplay=1'} title={v.title}
+                frameBorder="0" allow="autoplay; encrypted-media" allowFullScreen />
+              <button className={styles.closeVideo} onClick={() => setPlaying(null)}>✕ סגירה</button>
+            </div>
+          ) : (
+            <button className={styles.videoThumb} onClick={() => setPlaying(v.id)}>
+              <div className={styles.thumbPlaceholder}>
+                <span className={styles.playIcon}>▶</span>
               </div>
-            ) : (
-              <button className={styles.videoThumb} onClick={() => setPlaying(v.id)}>
-                <div className={styles.thumbPlaceholder}>
-                  <span className={styles.playIcon}>▶</span>
-                </div>
-                <div className={styles.videoInfo}>
-                  <div className={styles.videoTitle}>{v.title}</div>
-                  <div className={styles.videoMeta}>
-                    <span className={styles.videoCat}>{v.category}</span>
-                    <span className={styles.videoDate}>{v.uploadDate}</span>
-                  </div>
-                </div>
-              </button>
-            )}
-          </div>
-        ))}
-      </div>
+              <div className={styles.videoInfo}>
+                <div className={styles.videoTitle}>{v.title}</div>
+                {v.description && <div className={styles.videoDesc}>{v.description}</div>}
+              </div>
+            </button>
+          )}
+        </div>
+      ))}
     </div>
   );
 }
 
 export default function ProgramPage() {
   const { currentUser, videos } = useApp();
-  const myVideos = videos.filter(v => v.accessLevel === 'all' || v.accessLevel === currentUser?.id);
+  const [activeTab, setActiveTab] = useState('core');
+  const [activeCategory, setActiveCategory] = useState(null);
+
+  const myVideos = videos.filter(v =>
+    v.accessLevel === 'all' || v.accessLevel === currentUser?.id
+  );
+
+  const tabVideos = myVideos.filter(v =>
+    activeTab === 'core' ? v.contentType !== 'extra' : v.contentType === 'extra'
+  );
+
+  const usedCategories = CATEGORIES.filter(c =>
+    tabVideos.some(v => v.category === c.id)
+  );
+
+  const filteredVideos = activeCategory
+    ? tabVideos.filter(v => v.category === activeCategory)
+    : tabVideos;
 
   return (
     <div className={styles.page}>
@@ -55,8 +64,50 @@ export default function ProgramPage() {
         <h2 className={styles.heroTitle}>התוכנית שלי</h2>
         <p className={styles.heroSub}>הסרטונים והתכנים שמזל הכינה עבורך</p>
       </div>
+
+      {/* Main tabs */}
+      <div className={styles.mainTabs}>
+        <button
+          className={`${styles.mainTab} ${activeTab === 'core' ? styles.mainTabActive : ''}`}
+          onClick={() => { setActiveTab('core'); setActiveCategory(null); }}
+        >
+          תוכן ליבה
+        </button>
+        <button
+          className={`${styles.mainTab} ${activeTab === 'extra' ? styles.mainTabActive : ''}`}
+          onClick={() => { setActiveTab('extra'); setActiveCategory(null); }}
+        >
+          ⭐ תוכן העשרה
+        </button>
+      </div>
+
+      {/* Category chips */}
+      {usedCategories.length > 0 && (
+        <div className={styles.categoriesRow}>
+          <button
+            className={`${styles.categoryChip} ${!activeCategory ? styles.categoryChipActive : ''}`}
+            onClick={() => setActiveCategory(null)}
+          >
+            הכל
+          </button>
+          {usedCategories.map(c => (
+            <button
+              key={c.id}
+              className={`${styles.categoryChip} ${activeCategory === c.id ? styles.categoryChipActive : ''}`}
+              onClick={() => setActiveCategory(c.id)}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+      )}
+
       <div className={styles.content}>
-        <ProgramVideos videos={myVideos} />
+        {myVideos.length === 0 ? (
+          <p className={styles.videosEmpty}>מזל תעלה סרטונים עבורך בקרוב ✨</p>
+        ) : (
+          <VideosList videos={filteredVideos} />
+        )}
         <div style={{ height: 24 }} />
       </div>
     </div>

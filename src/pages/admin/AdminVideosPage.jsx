@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
+import { CATEGORIES } from '../../data/initialData';
 import styles from './AdminPage.module.css';
 
 export default function AdminVideosPage() {
@@ -64,6 +65,7 @@ function VideoForm({ initial, onSave, onClose }) {
     description: initial?.description || '',
     url: initial?.url || '',
     category: initial?.category || '',
+    contentType: initial?.contentType || 'core',
   });
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
@@ -82,7 +84,19 @@ function VideoForm({ initial, onSave, onClose }) {
           </div>
           <div className={styles.field}>
             <label className={styles.label}>קטגוריה</label>
-            <input className={styles.input} value={form.category} onChange={e => set('category', e.target.value)} placeholder="למשל: כלים מעשיים" />
+            <select className={styles.input} value={form.category} onChange={e => set('category', e.target.value)}>
+              <option value="">בחרי קטגוריה</option>
+              {CATEGORIES.map(c => (
+                <option key={c.id} value={c.id}>{c.label}</option>
+              ))}
+            </select>
+          </div>
+          <div className={styles.field}>
+            <label className={styles.label}>סוג תוכן</label>
+            <select className={styles.input} value={form.contentType} onChange={e => set('contentType', e.target.value)}>
+              <option value="core">ליבה</option>
+              <option value="extra">העשרה</option>
+            </select>
           </div>
           <div className={styles.field} style={{ gridColumn: '1/-1' }}>
             <label className={styles.label}>תיאור</label>
