@@ -92,8 +92,8 @@ function VideoForm({ initial, onSave, onClose }) {
             <input className={styles.input} value={form.title} onChange={e => set('title', e.target.value)} />
           </div>
           <div className={styles.field} style={{ gridColumn: '1/-1' }}>
-            <label className={styles.label}>קישור לסרטון (YouTube embed)</label>
-            <input className={styles.input} value={form.url} onChange={e => set('url', e.target.value)} placeholder="https://www.youtube.com/embed/..." />
+            <label className={styles.label}>קישור לסרטון (YouTube / Vimeo embed)</label>
+            <input className={styles.input} value={form.url} onChange={e => set('url', e.target.value)} placeholder="YouTube: https://www.youtube.com/embed/ID  |  Vimeo: https://player.vimeo.com/video/ID" />
           </div>
           <div className={styles.field}>
             <label className={styles.label}>קטגוריה</label>
