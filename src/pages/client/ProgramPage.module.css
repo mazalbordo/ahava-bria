@@ -1,4 +1,4 @@
-.page { padding: 0 0 16px; }
+﻿.page { padding: 0 0 16px; }
 
 .hero {
   background: linear-gradient(135deg, #3A3235, #6B1F1F);
@@ -122,3 +122,24 @@
   font-family: 'Heebo', sans-serif;
 }
 .videosEmpty { font-size: 13px; color: #9B8F93; text-align: center; padding: 32px 0; }
+
+.deepenBtn {
+  display: block;
+  width: 100%;
+  margin-top: 8px;
+  padding: 14px;
+  background: linear-gradient(135deg, #F5E8E8, #EDD5D5);
+  border: 2px dashed #C0504D;
+  border-radius: 14px;
+  color: #A52A2A;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: 'Heebo', sans-serif;
+  transition: all 0.2s;
+}
+.deepenBtn:hover {
+  background: linear-gradient(135deg, #A52A2A, #C0504D);
+  color: white;
+  border-style: solid;
+}

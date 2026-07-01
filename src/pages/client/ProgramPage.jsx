@@ -1,10 +1,12 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import { CATEGORIES } from '../../data/initialData';
 import styles from './ProgramPage.module.css';
 
-function VideosList({ videos }) {
+function VideosList({ videos, category, activeTab, onDeepen }) {
   const [playing, setPlaying] = useState(null);
+
+  const showDeepenBtn = activeTab === 'core' && category?.type === 'both';
 
   if (!videos.length) return (
     <p className={styles.videosEmpty}>אין סרטונים בקטגוריה זו עדיין ✨</p>
@@ -33,6 +35,11 @@ function VideosList({ videos }) {
           )}
         </div>
       ))}
+      {showDeepenBtn && (
+        <button className={styles.deepenBtn} onClick={onDeepen}>
+          ✨ רוצה להעמיק בנושא?
+        </button>
+      )}
     </div>
   );
 }
@@ -58,6 +65,14 @@ export default function ProgramPage() {
     ? tabVideos.filter(v => v.category === activeCategory)
     : tabVideos;
 
+  const activeCategoryObj = activeCategory
+    ? CATEGORIES.find(c => c.id === activeCategory)
+    : null;
+
+  function handleDeepen() {
+    setActiveTab('extra');
+  }
+
   return (
     <div className={styles.page}>
       <div className={styles.hero}>
@@ -65,7 +80,6 @@ export default function ProgramPage() {
         <p className={styles.heroSub}>הסרטונים והתכנים שמזל הכינה עבורך</p>
       </div>
 
-      {/* Main tabs */}
       <div className={styles.mainTabs}>
         <button
           className={`${styles.mainTab} ${activeTab === 'core' ? styles.mainTabActive : ''}`}
@@ -81,7 +95,6 @@ export default function ProgramPage() {
         </button>
       </div>
 
-      {/* Category chips */}
       {usedCategories.length > 0 && (
         <div className={styles.categoriesRow}>
           <button
@@ -106,7 +119,12 @@ export default function ProgramPage() {
         {myVideos.length === 0 ? (
           <p className={styles.videosEmpty}>מזל תעלה סרטונים עבורך בקרוב ✨</p>
         ) : (
-          <VideosList videos={filteredVideos} />
+          <VideosList
+            videos={filteredVideos}
+            category={activeCategoryObj}
+            activeTab={activeTab}
+            onDeepen={handleDeepen}
+          />
         )}
         <div style={{ height: 24 }} />
       </div>
