@@ -12,10 +12,11 @@ const NAV_ITEMS = [
 ];
 
 const ADMIN_NAV_ITEMS = [
-  { id: 'admin-clients', label: 'לקוחות',  icon: '👩' },
-  { id: 'admin-events',  label: 'אירועים', icon: '📅' },
-  { id: 'admin-tasks',   label: 'משימות',  icon: '✅' },
-  { id: 'admin-videos',  label: 'סרטונים', icon: '🎬' },
+  { id: 'admin-clients',   label: 'לקוחות',  icon: '👩' },
+  { id: 'admin-events',    label: 'אירועים', icon: '📅' },
+  { id: 'admin-tasks',     label: 'משימות',  icon: '✅' },
+  { id: 'admin-videos',    label: 'סרטונים', icon: '🎬' },
+  { id: 'admin-community', label: 'קהילה',   icon: '🌸' },
 ];
 
 export default function Layout({ children, activePage, onNavigate }) {

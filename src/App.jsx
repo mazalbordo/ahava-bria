@@ -13,6 +13,7 @@ import AdminClientsPage from './pages/admin/AdminClientsPage';
 import AdminEventsPage from './pages/admin/AdminEventsPage';
 import AdminTasksPage from './pages/admin/AdminTasksPage';
 import AdminVideosPage from './pages/admin/AdminVideosPage';
+import AdminCommunityPage from './pages/admin/AdminCommunityPage';
 
 function AppInner() {
   const { currentUser, loading } = useApp();
@@ -33,11 +34,12 @@ function AppInner() {
   function renderPage() {
     if (isAdmin) {
       switch (page) {
-        case 'admin-clients': return <AdminClientsPage />;
-        case 'admin-events':  return <AdminEventsPage />;
-        case 'admin-tasks':   return <AdminTasksPage />;
-        case 'admin-videos':  return <AdminVideosPage />;
-        default:              return <AdminClientsPage />;
+        case 'admin-clients':   return <AdminClientsPage />;
+        case 'admin-events':    return <AdminEventsPage />;
+        case 'admin-tasks':     return <AdminTasksPage />;
+        case 'admin-videos':    return <AdminVideosPage />;
+        case 'admin-community': return <AdminCommunityPage />;
+        default:                return <AdminClientsPage />;
       }
     }
     switch (page) {
