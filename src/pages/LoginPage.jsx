@@ -37,7 +37,8 @@ export default function LoginPage() {
               className={styles.input}
               type="text"
               value={username}
-              onChange={e => setUsername(e.target.value)}
+              onChange={e => setUsername(e.target.value.toLowerCase())}
+              autoCapitalize="none"
               placeholder="הכניסי את שם המשתמש שלך"
               autoComplete="username"
               required

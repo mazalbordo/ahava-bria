@@ -1,3 +1,5 @@
+import emailjs from '@emailjs/browser';
+import { EMAIL_CONFIG } from '../../emailConfig';
 import { useState } from 'react';
 import { useApp } from '../../context/AppContext';
 import styles from './CrisisPage.module.css';
@@ -9,7 +11,7 @@ const STEPS = [
     icon: '⚡',
     title: 'מה הטריגר?',
     subtitle: 'מה קרה שגרם לך להרגיש ככה? תארי את הסיטואציה.',
-    placeholder: 'לדוגמה: הוא לא ענה להודעה שלי כבר שעתיים...',
+    placeholder: 'לדוגמא: הוא לא ענה להודעה שלי כבר שעתיים...',
   },
   {
     id: 'thoughts',
@@ -17,15 +19,15 @@ const STEPS = [
     icon: '💭',
     title: 'מה המחשבות?',
     subtitle: 'אילו מחשבות עולות לך עכשיו? ללא שיפוטיות — כתבי הכל.',
-    placeholder: 'לדוגמה: אולי הוא כועס עליי, אולי הוא מתחרט...',
+    placeholder: 'לדוגמא: אולי הוא כועס עליי, אולי הוא מתחרט...',
   },
   {
     id: 'body',
     num: 3,
-    icon: '🫀',
+    icon: '🫐',
     title: 'מה הרגשת בגוף?',
     subtitle: 'שימי לב לגוף שלך — מה את מרגישה פיזית עכשיו?',
-    placeholder: 'לדוגמה: לב דופק מהר, צמרמורת, בטן קשה...',
+    placeholder: 'לדוגמא: לב דופק מהר, צמרמורת, בטן קשה...',
   },
   {
     id: 'reaction',
@@ -33,7 +35,7 @@ const STEPS = [
     icon: '🔄',
     title: 'איך הגבת?',
     subtitle: 'מה עשית? פנימית — ומה עשית בפועל?',
-    placeholder: 'לדוגמה: שלחתי עוד הודעה, בדקתי את הסטטוס שלו שוב ושוב...',
+    placeholder: 'לדוגמא: שלחתי עוד הודעה, בדקתי את הסטטוס שלו שוב ושוב...',
   },
 ];
 
@@ -60,6 +62,20 @@ export default function CrisisPage() {
     setSending(true);
     try {
       await sendCrisisReport(answers);
+      if (EMAIL_CONFIG.publicKey !== 'YOUR_PUBLIC_KEY') {
+        await emailjs.send(
+          EMAIL_CONFIG.serviceId,
+          EMAIL_CONFIG.templateId,
+          {
+            to_email: EMAIL_CONFIG.toEmail,
+            trigger:  answers.trigger,
+            thoughts: answers.thoughts,
+            body:     answers.body,
+            reaction: answers.reaction,
+          },
+          EMAIL_CONFIG.publicKey
+        );
+      }
       setTalkSent(true);
     } catch {
       alert('שגיאה בשליחה — נסי שוב');
@@ -68,7 +84,6 @@ export default function CrisisPage() {
     }
   }
 
-  // ── Intro ──
   if (step === 0) {
     return (
       <div className={styles.page}>
@@ -87,7 +102,6 @@ export default function CrisisPage() {
     );
   }
 
-  // ── Done ──
   if (step === STEPS.length + 1) {
     return (
       <div className={styles.page}>
@@ -99,7 +113,6 @@ export default function CrisisPage() {
             את לא צריכה להתמודד עם זה לבד.
           </p>
 
-          {/* Summary */}
           <div className={styles.summary}>
             {STEPS.map(s => answers[s.id] && (
               <div key={s.id} className={styles.summaryItem}>
@@ -134,13 +147,11 @@ export default function CrisisPage() {
     );
   }
 
-  // ── Step ──
   const current = STEPS[step - 1];
   const progress = step / STEPS.length;
 
   return (
     <div className={styles.page}>
-      {/* Progress */}
       <div className={styles.progressWrap}>
         <div className={styles.progressBar}>
           <div className={styles.progressFill} style={{ width: `${progress * 100}%` }} />
@@ -175,7 +186,6 @@ export default function CrisisPage() {
         </div>
       </div>
 
-      {/* Breathing tip */}
       <div className={styles.tip}>
         <p className={styles.tipText}>
           💨 נשמי עמוק לפני שאת עונה — שאיפה 4 שניות, עצירה 4, נשיפה 6

@@ -17,6 +17,7 @@ const ADMIN_NAV_ITEMS = [
   { id: 'admin-tasks',     label: 'משימות',  icon: '✅' },
   { id: 'admin-videos',    label: 'סרטונים', icon: '🎬' },
   { id: 'admin-community', label: 'קהילה',   icon: '🌸' },
+  { id: 'admin-crisis',    label: 'חירום',   icon: '🆘' },
 ];
 
 export default function Layout({ children, activePage, onNavigate }) {

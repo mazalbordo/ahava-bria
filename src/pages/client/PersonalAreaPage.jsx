@@ -47,7 +47,7 @@ function AnxietyGraph({ userId }) {
   return (
     <div className={styles.card}>
       <div className={styles.cardHeader}>
-        <h3 className={styles.cardTitle}>📊 גרף החרדה שלי</h3>
+        <h3 className={styles.cardTitle}>📊 גרף ההתקדמות שלי</h3>
         <div className={styles.rangeTabs}>
           {[7, 14, 30].map(r => (
             <button key={r}

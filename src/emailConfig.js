@@ -1,0 +1,7 @@
+// הגדרות EmailJS — מלאי את הפרטים שלך מ-emailjs.com
+export const EMAIL_CONFIG = {
+  serviceId:  'YOUR_SERVICE_ID',
+  templateId: 'YOUR_TEMPLATE_ID',
+  publicKey:  'YOUR_PUBLIC_KEY',
+  toEmail:    'mazibordo@gmail.com',
+};

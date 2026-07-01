@@ -14,6 +14,7 @@ import AdminEventsPage from './pages/admin/AdminEventsPage';
 import AdminTasksPage from './pages/admin/AdminTasksPage';
 import AdminVideosPage from './pages/admin/AdminVideosPage';
 import AdminCommunityPage from './pages/admin/AdminCommunityPage';
+import AdminCrisisPage from './pages/admin/AdminCrisisPage';
 
 function AppInner() {
   const { currentUser, loading } = useApp();
@@ -39,6 +40,7 @@ function AppInner() {
         case 'admin-tasks':     return <AdminTasksPage />;
         case 'admin-videos':    return <AdminVideosPage />;
         case 'admin-community': return <AdminCommunityPage />;
+        case 'admin-crisis':    return <AdminCrisisPage />;
         default:                return <AdminClientsPage />;
       }
     }
